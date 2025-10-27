@@ -1,0 +1,659 @@
+/* ======================================= */
+/* 1. Variables y Base            */
+/* ======================================= */
+:root {
+    --color-principal: #3b9414; /* Verde oscuro */
+    --color-secundario: #83f751; /* Verde medio */
+    --color-fondo: #f4f4f4;
+    --color-verde-transparente: rgba(150, 200, 150, 0.2); /* Base Glassmorphism */
+}
+
+/* Base de reseteo y fuentes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    line-height: 1.6;
+    /* Un pequeño patrón de fondo para resaltar el glassmorphism */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23d4edd0" width="100" height="100"/><rect x="50" width="10" height="10" fill="%23c4e0c0"/><rect y="50" width="10" height="10" fill="%23c4e0c0"/><rect x="50" y="50" width="10" height="10" fill="%23c4e0c0"/></svg>');
+}
+
+h1, h2, h3 {
+    color: var(--color-principal);
+    margin-bottom: 15px;
+}
+
+/* ======================================= */
+/* 2. Glassmorphism Estilo          */
+/* ======================================= */
+.glass-effect {
+    background: var(--color-verde-transparente); 
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 20px;
+}
+
+/* ======================================= */
+/* 3. Header y Navegación         */
+/* ======================================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+.logo img {
+    /* Ajuste para que tu logo se vea bien en el encabezado */
+    height: 70px; /* Tamaño del logo */
+    width: auto;
+    display: block;
+    border-radius: 150px;
+}
+
+nav a {
+    color: var(--color-principal);
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 15px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Un toque blanco para hover */
+    border-radius: 8px;
+}
+
+/* Estilo para el contenedor de todas las secciones (para dejar espacio al header fijo) */
+section {
+    padding: 100px 5%;
+    min-height: 50vh;
+}
+#slider {
+    padding-top: 100px; /* Ajuste para que el contenido no se oculte tras el header */
+    text-align: center;
+}
+
+/* ======================================= */
+/* 4. Sección Slider y Contenido      */
+/* ======================================= */
+.slider-content img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    border-radius: 10px;
+    margin: 0px auto;
+}
+
+/* ======================================= */
+/* 5. Servicios Destacados         */
+/* ======================================= */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.icono-jardinero {
+    font-size: 3.5em;
+    color: var(--color-principal);
+    margin-bottom: 15px;
+}
+
+/* ======================================= */
+/* 6. Reseñas y Comentarios         */
+/* ======================================= */
+#testimonios {
+    background-color: #E9F4E9; /* Un color de fondo suave para diferenciar la sección */
+}
+
+.reseñas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.reseña-card {
+    padding: 25px;
+    text-align: center;
+}
+
+.reseña-card p {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.reseña-card span {
+    font-weight: bold;
+    color: var(--color-secundario);
+    display: block;
+}
+
+/* ======================================= */
+/* 7. Preguntas Frecuentes (FAQ)     */
+/* ======================================= */
+.faq-acordeon {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.faq-acordeon details {
+    margin-bottom: 15px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.faq-acordeon summary {
+    font-weight: bold;
+    padding: 15px 20px;
+    list-style: none; /* Oculta la flecha por defecto */
+    position: relative;
+}
+
+.faq-acordeon summary:before {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5em;
+    line-height: 0.8;
+    color: var(--color-principal);
+}
+
+.faq-acordeon details[open] summary:before {
+    content: '-';
+}
+
+.faq-acordeon p {
+    padding: 10px 20px 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ======================================= */
+/* 8. Estilos Generales           */
+/* ======================================= */
+.boton-cta {
+    /* ... (El estilo del botón CTA ya estaba en el código anterior) ... */
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-principal);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+/* ======================================= */
+/* 9. Pie de Página (Footer)      */
+/* ======================================= */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 5%;
+}
+
+.redes-sociales i {
+    font-size: 1.5em;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* ======================================= */
+/* 10. Responsividad             */
+/* ======================================= */
+/* Móviles (hasta 768px) */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding-top: 5px;
+    }
+    nav {
+        margin-top: 5px;
+        display: flex;
+        flex-wrap: wrap; /* Permite que los enlaces pasen a otra línea */
+        justify-content: center;
+    }
+    nav a {
+        margin: 5px 10px;
+    }
+
+    .servicios-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+}
+
+/* ======================================= */
+/* 11. WhatsApp Flotante (CSS)        */
+/* ======================================= */
+#whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    z-index: 1001;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 4px solid transparent; /* Necesario para la animación JS */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+#whatsapp-flotante {
+    animation: pulse 2s infinite;
+}
+
+/* ======================================= */
+/* 12. Animaciones de Scroll         */
+/* ======================================= */
+.seccion-animada {
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.seccion-animada.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.seccion-animada[data-anim="slide-left"] { transform: translateX(-50px); }
+.seccion-animada.visible[data-anim="slide-left"] { transform: translateX(0); }
+.seccion-animada[data-anim="slide-right"] { transform: translateX(50px); }
+.seccion-animada.visible[data-anim="slide-right"] { transform: translateX(0); }
+
+/* Estilos para otras páginas */
+
+.page-content {
+    padding-top: 100px;
+    min-height: 80vh;
+}
+
+/* Estilo para la foto de la página Nosotros */
+.owner-info {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* Responsivo */
+}
+.owner-info img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Forma de círculo */
+    object-fit: cover;
+    border: 5px solid var(--color-secundario);
+}
+.owner-text {
+    flex: 1;
+}
+
+/* Estilo del Mapa */
+#map-container {
+    width: 100%;
+    height: 500px;
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+#map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* ======================================= */
+/* 5. SLIDER FUNCIONALIDAD Y ESTILOS */
+/* ======================================= */
+#slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 100px auto 0;
+    overflow: hidden; /* Oculta las diapositivas que no están activas */
+    padding: 0; /* Quita el padding de la sección para que la imagen sea grande */
+    border-radius: 12px;
+}
+
+.slider-content {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Altura fija para el slider */
+}
+
+.slide {
+    display: none; /* Por defecto, todas están ocultas */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    display: block; /* La diapositiva activa es visible */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    border-radius: 12px;
+    /* Aplicamos el glass-effect directamente aquí para hacerlo transparente */
+    background: rgba(150, 200, 150, 0.4); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.info-overlay h2 {
+    color: white;
+}
+
+/* Estilos de los botones de control (flechas) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    right: 98%;
+    top: 89%;
+    width: auto;
+    padding: 6px;
+    margin-top: -12px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 4 2px 2px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    border: flex ;
+    z-index: 50; /* Para que estén sobre las imágenes */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Responsividad para slider */
+@media screen and (max-width: 768px) {
+    .slider-content {
+        height: 300px; /* Menos altura en móviles */
+    }
+    .prev, .next {
+        font-size: 16px;
+        padding: 1px;
+    }
+}
+/* ======================================= */
+/* 13. ESTILOS MEJORADOS PARA LA COTIZACIÓN */
+/* ======================================= */
+
+/* Contenedor del formulario */
+#cotizacion-form {
+    padding: 40px;
+    border-radius: 15px;
+    /* Manteniendo el glass-effect */
+}
+
+/* Etiquetas y títulos del formulario */
+#cotizacion-form h2 {
+    color: var(--color-principal);
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* Estilo de los campos de entrada y selección */
+#cotizacion-form label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+#cotizacion-form input[type="text"],
+#cotizacion-form input[type="email"],
+#cotizacion-form input[type="tel"],
+#cotizacion-form input[type="number"],
+#cotizacion-form select,
+#cotizacion-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(150, 200, 150, 0.6); /* Borde verde suave */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semi-transparente */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    /* Mantener coherencia con el estilo */
+    backdrop-filter: blur(2px);
+}
+
+#cotizacion-form input:focus,
+#cotizacion-form select:focus,
+#cotizacion-form textarea:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 8px rgba(56, 118, 29, 0.4); /* Sombra al enfocar (verde) */
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Estilo del botón de envío (ya estaba definido en .boton-cta, pero lo revisamos) */
+#cotizacion-form .boton-cta {
+    margin-top: 25px;
+    font-size: 1.1em;
+}
+
+/* ======================================= */
+/* 14. HOJAS FLOTANTES (EFECTO DE JARDÍN) */
+/* ======================================= */
+
+/* Contenedor principal de las hojas */
+.leaves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Crucial para que no bloquee los clics */
+    overflow: hidden;
+    z-index: 1; /* Bajo para estar detrás del contenido (z-index del header es 1000) */
+}
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-secundario); /* Base verde de la hoja */
+    border-radius: 50% 0; /* Forma de hoja simple */
+    opacity: 0;
+    animation: fall linear infinite, swing ease-in-out infinite;
+    transform: rotate(45deg);
+}
+
+/* Animación de caída (velocidad constante) */
+@keyframes fall {
+    0% { top: -10%; opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
+/* Animación de oscilación (movimiento lateral) */
+@keyframes swing {
+    0% { transform: translateX(0) rotate(45deg); }
+    50% { transform: translateX(20px) rotate(60deg); }
+    100% { transform: translateX(0) rotate(45deg); }
+}
+
+/* Creación de múltiples animaciones para variedad */
+/* Se requiere JavaScript para inyectar estas hojas dinámicamente */
+
+/* Imagen con el icono al hacer scroll*/
+/* * Imagen con el icono al hacer scroll*/
+article {
+    /* --- CAMBIO CRÍTICO: HACERLO GRANDE Y RESPONSIVO --- */
+    width: 100%; 
+    max-width: 1200px; 
+    height: 350px; /* Altura fija para grandes pantallas */
+    margin: 0 auto; 
+    padding: 0; 
+
+    /* --- ESTILOS ORIGINALES MANTENIDOS --- */
+    position: relative;
+    transition: all .3s ease;
+    
+    transform-style: preserve-3d; 
+    perspective: 1000px; 
+    z-index: 10; /* Añadido para asegurar que sobresalga */
+}
+
+article img:first-child {
+    /* ... (Estilos de imagen principal, son proporcionales y están bien) ... */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 103%;
+    height: 110%;
+    
+    box-shadow: 0 60px 60px -60px rgba(0, 30, 255, 0.5);
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+article img:last-child {
+    /* IMAGEN EMERGENTE: Mantenemos el ancho fijo para Desktop, pero reducimos la transición */
+    position: absolute;
+    width: 360px; /* Fijo para pantallas grandes */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(25%);
+    transition: 0.5s ease; /* Reducido de 3s a 0.5s */
+    opacity: 0;
+    z-index: 15;
+}
+
+article:hover {
+    transform: 
+        perspective(1000px) 
+        rotateX(10deg)
+        translateY(-5%)
+        translateZ(20px); 
+}
+
+/* Pseudo-elemento (degradado) */
+article::before{
+    /* ... (Mantenemos los estilos de before) ... */
+    content: '';
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    height: 110%;
+    width: 103.1%;
+    background-image: 
+    linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(0,0,0,0.5) 50%,
+        rgba(0,0,0) 95%
+    );
+    opacity: 0;
+    transition: all .3s ease;
+    z-index: 14; 
+    border-radius: 9px; 
+}
+article:hover::before{
+    opacity: 1;
+}
+
+article:hover img:last-child{
+    opacity: 1;
+    /* Recomendación: Ajustamos la transformación para que suba completamente */
+    transform: translateY(0%) scale(1.05);
+}
+
+/* ======================================= */
+/* 11. FONDO DE DEGRADADO ANIMADO SUAVE */
+/* ======================================= */
+
+.animated-gradient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    
+    /* 🟢 CLAVE: El degradado es mucho más grande que la pantalla (400%) */
+    background: linear-gradient(
+        -45deg, /* Ángulo del degradado */
+        #E6F3E6,        /* Verde Base Muy Claro */
+        #A8C697,        /* Tono de verde medio suave */
+        #5bf05b,        /* Verde Puro que quieres */
+        #5F9B5E         /* Tono verde oscuro suave */
+    );
+    background-size: 400% 400%;
+    
+    /* Animación muy lenta y continua */
+    animation: gradient-flow 30s ease infinite; 
+}
+
+/* Definición de la Animación */
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%; /* Inicia en la izquierda media */
+    }
+    50% {
+        background-position: 100% 50%; /* Se mueve a la derecha media */
+    }
+    100% {
+        background-position: 0% 50%; /* Vuelve a iniciar */
+    }
+}
